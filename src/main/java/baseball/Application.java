@@ -7,7 +7,10 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        // 게임 시작문구 출력
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        // 컴퓨터의 랜덤 숫자 생성
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
