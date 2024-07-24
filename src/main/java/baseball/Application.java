@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -24,7 +25,6 @@ public class Application {
         // 사용자에게 서로다른 3자리 수 입력 받기
         System.out.print("숫자를 입력해주세요 : ");
         String readInput = Console.readLine();
-
-        // System.out.println(readInput);
+        //System.out.println(readInput);
     }
 }
