@@ -20,11 +20,25 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        // System.out.println("컴퓨터가 생성한 숫자: " + computer);
+         System.out.println("컴퓨터가 생성한 숫자: " + computer);
 
         // 사용자에게 서로다른 3자리 수 입력 받기
         System.out.print("숫자를 입력해주세요 : ");
         String readInput = Console.readLine();
         //System.out.println(readInput);
+        //System.out.println(readInput.getClass().getName());
+
+        // 힌트 출력 기능 (1.글자 한개씩 관리해서 한자리씩 비교)
+        String[] parts = readInput.split(""); // 입력값을 개별적으로 처리하기 위해서 split 으로 분리
+        // 1. 스트라이크 출력 기능
+        int strikes = 0;
+        for (int i = 0; i < 3; i++) {
+            int userNumber = Integer.parseInt(parts[i]); // 사용자 입력값에서 숫자 가져오기
+            if (computer.get(i) == userNumber) {
+                strikes++;
+            }
+        }
+        // 스트라이크 결과 출력
+        System.out.println(strikes + " 스트라이크");
     }
 }
