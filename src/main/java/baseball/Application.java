@@ -51,5 +51,10 @@ public class Application {
         }
         // 볼 결과 출력
         System.out.println(balls + " 볼");
+
+        // 3. 낫싱 출력 기능
+        if (strikes == 0 && balls == 0) {
+            System.out.println("낫싱");
+        }
     }
 }
