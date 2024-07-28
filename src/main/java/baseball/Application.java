@@ -40,5 +40,16 @@ public class Application {
         }
         // 스트라이크 결과 출력
         System.out.println(strikes + " 스트라이크");
+
+        // 2. 볼 출력 기능
+        int balls = 0;
+        for (int i = 0; i < 3; i++) {
+            int userNumber = Integer.parseInt(parts[i]);
+            if (computer.contains(userNumber) && computer.get(i) != userNumber) {
+                balls++;
+            }
+        }
+        // 볼 결과 출력
+        System.out.println(balls + " 볼");
     }
 }
