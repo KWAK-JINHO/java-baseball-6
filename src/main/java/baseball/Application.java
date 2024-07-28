@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -31,7 +32,15 @@ public class Application {
                 //System.out.println(readInput);
                 //System.out.println(readInput.getClass().getName());
 
-                // 힌트 출력 기능 (1.글자 한개씩 관리해서 한자리씩 비교)
+                // 사용자에게 받은 입력값 유효성 검사
+                try {
+                    validateInput(readInput);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("잘못된 입력: " + e.getMessage());
+                    continue; // 잘못된 입력일 경우 다시 입력 받기
+                }
+
+                // 힌트 출력 기능
                 String[] parts = readInput.split(""); // 입력값을 개별적으로 처리하기 위해서 split 으로 분리
                 // 1. 스트라이크 출력 기능
                 int strikes = 0;
@@ -75,6 +84,28 @@ public class Application {
                 break; // 프로그램 종료
             }
             // 재시작할 경우 아무 작업도 하지 않고 루프 다시 시작.
+        }
+    }
+
+    private static void validateInput(String input) {
+        // 1. 숫자가 1~9까지의 숫자인지 확인
+        for (char c : input.toCharArray()) {
+            if (c < '1' || c > '9') {
+                throw new IllegalArgumentException("입력값은 1~9 사이의 숫자만 포함되어야 합니다.");
+            }
+        }
+
+        // 2. 3자리 숫자인지 확인 (중복된 코드로 사용할 필요 없음)
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("입력값은 3자리 숫자여야 합니다.");
+        }
+
+        // 3. 같은 숫자가 중복된 경우 확인
+        Set<Character> uniqueDigits = new HashSet<>();
+        for (char c : input.toCharArray()) {
+            if (!uniqueDigits.add(c)) {
+                throw new IllegalArgumentException("입력값에는 중복된 숫자가 포함될 수 없습니다.");
+            }
         }
     }
 }
