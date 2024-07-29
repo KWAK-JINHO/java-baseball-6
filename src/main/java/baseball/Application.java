@@ -10,10 +10,10 @@ import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
-        while (true) {
-            // 게임 시작문구 출력
-            System.out.println("숫자 야구 게임을 시작합니다.");
+        // 게임 시작문구 출력
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
+        while (true) {
             // 컴퓨터의 랜덤 숫자 생성
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
@@ -22,7 +22,7 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }
-            System.out.println("컴퓨터가 생성한 숫자: " + computer);
+            //System.out.println("컴퓨터가 생성한 숫자: " + computer);
 
             boolean gameRunning = true;
             while (gameRunning) {
@@ -48,8 +48,6 @@ public class Application {
                         strikes++;
                     }
                 }
-                // 스트라이크 결과 출력
-                System.out.println(strikes + " 스트라이크");
 
                 // 2. 볼 출력 기능
                 int balls = 0;
@@ -59,25 +57,24 @@ public class Application {
                         balls++;
                     }
                 }
-                // 볼 결과 출력
-                System.out.println(balls + " 볼");
 
-                // 3. 낫싱 출력 기능
+                // 힌트 출력
                 if (strikes == 0 && balls == 0) {
                     System.out.println("낫싱");
-                }
-
-                // 4. 3스트라이크 일때, 게임 종료 문구 출력
-                if (strikes == 3) {
+                } else if (strikes == 3) {
+                    // 4. 3스트라이크 일때, 게임 종료 문구 출력
+                    System.out.println("3스트라이크");
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     gameRunning = false; // 게임 종료
+                } else {
+                    System.out.println(balls + "볼 " + strikes + "스트라이크");
                 }
             }
 
             // 게임 재시작 또는 종료 여부 선택
             boolean restartChoice = false;
             while (!restartChoice) {
-                System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String choice = Console.readLine();
 
                 // 선택값 유효성 검사
@@ -96,6 +93,7 @@ public class Application {
         }
     }
 
+    // 첫번째 입력값 유효성 검사
     private static void validateInput(String input) {
         // 1. 숫자가 1~9까지의 숫자인지 확인
         for (char c : input.toCharArray()) {
@@ -120,6 +118,7 @@ public class Application {
         }
     }
 
+    // 두번째 입력값 유효성 검사
     private static void validateInput2(String input) {
         // 입력 받은 숫자의 길이가 1이 아닐 경우
         if (input.length() != 1) {
