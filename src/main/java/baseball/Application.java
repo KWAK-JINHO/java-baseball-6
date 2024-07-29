@@ -22,7 +22,7 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }
-            //System.out.println("컴퓨터가 생성한 숫자: " + computer);
+            System.out.println("컴퓨터가 생성한 숫자: " + computer);
 
             boolean gameRunning = true;
             while (gameRunning) {
@@ -35,7 +35,7 @@ public class Application {
                     validateInput(readInput);
                 } catch (IllegalArgumentException e) {
                     System.out.println("잘못된 입력: " + e.getMessage());
-                    continue; // 잘못된 입력일 경우 다시 입력 받기
+                    throw e; // 예외를 catch 한 후 다시 던지도록 구현
                 }
 
                 // 힌트 출력 기능
@@ -72,24 +72,22 @@ public class Application {
             }
 
             // 게임 재시작 또는 종료 여부 선택
-            boolean restartChoice = false;
-            while (!restartChoice) {
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String choice = Console.readLine();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String choice = Console.readLine();
 
-                // 선택값 유효성 검사
-                try {
-                    validateInput2(choice);
-                    restartChoice = true; // 유효한 입력일 경우에 종료
-                    if (choice.equals("2")) {
-                        System.out.println("게임을 종료합니다.");
-                        return; // 프로그램 종료
-                    }
-                    // 재시작할 경우 아무 작업도 하지 않고 루프 다시 시작.
-                } catch (IllegalArgumentException e) {
-                    System.out.println("잘못된 입력: " + e.getMessage());
+            // 선택값 유효성 검사
+            try {
+                validateInput2(choice);
+                if (choice.equals("2")) {
+                    System.out.println("게임을 종료합니다.");
+                    return; // 프로그램 종료
                 }
+                // 재시작할 경우 아무 작업도 하지 않고 루프 다시 시작.
+            } catch (IllegalArgumentException e) {
+                System.out.println("잘못된 입력: " + e.getMessage());
+                throw e;
             }
+
         }
     }
 
