@@ -22,7 +22,7 @@ public class Application {
                     computer.add(randomNumber);
                 }
             }
-            System.out.println("컴퓨터가 생성한 숫자: " + computer);
+            // System.out.println("컴퓨터가 생성한 숫자: " + computer);
 
             boolean gameRunning = true;
             while (gameRunning) {
@@ -81,13 +81,12 @@ public class Application {
                 if (choice.equals("2")) {
                     System.out.println("게임을 종료합니다.");
                     return; // 프로그램 종료
+                    // 재시작할 경우 아무 작업도 하지 않고 루프 다시 시작.
                 }
-                // 재시작할 경우 아무 작업도 하지 않고 루프 다시 시작.
             } catch (IllegalArgumentException e) {
                 System.out.println("잘못된 입력: " + e.getMessage());
                 throw e;
             }
-
         }
     }
 
