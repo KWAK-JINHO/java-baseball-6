@@ -29,8 +29,6 @@ public class Application {
                 // 사용자에게 서로다른 3자리 수 입력 받기
                 System.out.print("숫자를 입력해주세요 : ");
                 String readInput = Console.readLine();
-                //System.out.println(readInput);
-                //System.out.println(readInput.getClass().getName());
 
                 // 사용자에게 받은 입력값 유효성 검사
                 try {
@@ -105,8 +103,8 @@ public class Application {
                 throw new IllegalArgumentException("입력값은 1~9 사이의 숫자만 포함되어야 합니다.");
             }
         }
-        // string값으로 받아서 toCharArray 로 문자배열로 변환 시킨다음에 char형 변수 c로 처리한다.
-        // char타입의 비교는 아스키코값을 기반으로 한다.
+        // string값으로 받아서 toCharArray로 문자배열로 변환 시킨다음에 char형 변수 c로 처리한다.
+        // char타입의 비교는 아스키코드값을 기반으로 한다.
 
         // 2. 3자리 숫자인지 확인 (중복된 코드로 사용할 필요 없음)
         if (input.length() != 3) {
@@ -123,14 +121,15 @@ public class Application {
     }
 
     private static void validateInput2(String input) {
+        // 입력 받은 숫자의 길이가 1이 아닐 경우
+        if (input.length() != 1) {
+            throw new IllegalArgumentException("입력값은 한 글자만 포함되어야 합니다.");
+        }
+
         // 입력받은 숫자가 1 혹은 2가 아닌 다른 숫자일 경우
         if (!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException("입력값은 '1' 또는 '2'여야 합니다.");
         }
         // 자바에서는 작은따옴표와 큰따옴표가 다르다. ''는 문자 ""는 문자열을 다룰때 사용해야 한다.
-
-        if (input.length() != 1) {
-            throw new IllegalArgumentException("입력값은 한 글자만 포함되어야 합니다.");
-        }
     }
 }
