@@ -99,7 +99,7 @@ public class Application {
             }
         }
         // string값으로 받아서 toCharArray로 문자배열로 변환 시킨다음에 char형 변수 c로 처리한다.
-        // char타입의 비교는 아스키코드값을 기반으로 한다.
+        // char타입의 비교는 유니코드값을 기반으로 한다.
 
         // 2. 3자리 숫자인지 확인 (중복된 코드로 사용할 필요 없음)
         if (input.length() != 3) {
@@ -129,3 +129,22 @@ public class Application {
         // 자바에서는 작은따옴표와 큰따옴표가 다르다. ''는 문자 ""는 문자열을 다룰때 사용해야 한다.
     }
 }
+
+
+/**
+ * <-->mvc 패턴 도입중</-->
+package baseball;
+
+import baseball.controller.GameController;
+import baseball.model.Game;
+import baseball.view.GameView;
+
+public class Application {
+    public static void main(String[] args) {
+        Game game = new Game();
+        GameView view = new GameView();
+        GameController controller = new GameController(game, view);
+        controller.runGame();
+    }
+}
+ */

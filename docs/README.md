@@ -1,3 +1,6 @@
+# 아키텍쳐
+<img src="img/architecture_diagram.png" width="500" alt="아키텍처 다이어그램">
+
 # 프로젝트 개요
 
 - 게임이 시작되면 컴퓨터가 세 자릿수를 생성한다.
